@@ -13,6 +13,9 @@ namespace VoxInvasion.Runtime.UI.Screens
             SubscribeUpdates();
         }
 
+        private void OnDestroy() =>
+            Cleanup();
+
         protected virtual void OnAwake() { }
         protected virtual void Initialize() { }
         protected virtual void SubscribeUpdates() { }

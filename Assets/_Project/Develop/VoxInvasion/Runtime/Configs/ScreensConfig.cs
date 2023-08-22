@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using VoxInvasion.Runtime.UI.Screens;
@@ -9,6 +10,13 @@ namespace VoxInvasion.Runtime.Configs
     {
         [SerializeField] private List<BaseScreen> _screens;
 
-        public List<BaseScreen> Screens => _screens;
+        public TScreen GetScreen<TScreen>() where TScreen : BaseScreen
+        {
+            foreach (var baseScreen in _screens)
+                if (baseScreen is TScreen screen)
+                    return screen;
+
+            throw new IndexOutOfRangeException($"Can't find screen of type {typeof(TScreen)}");
+        }
     }
 }

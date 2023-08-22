@@ -1,0 +1,36 @@
+using UnityEngine;
+using VContainer;
+using VContainer.Unity;
+using VoxInvasion.Runtime.UI.Screens;
+
+namespace VoxInvasion.Runtime.Services.UI
+{
+    public class UIFactory
+    {
+        private readonly IObjectResolver _container;
+        private readonly ConfigProvider _configProvider;
+        private Transform _uiRoot;
+
+        public UIFactory(IObjectResolver container, ConfigProvider configProvider)
+        {
+            _container = container;
+            _configProvider = configProvider;
+        }
+
+        public TScreen CreateScreen<TScreen>() where TScreen : BaseScreen
+        {
+            if (_uiRoot == null)
+            {
+                _uiRoot = new GameObject("UIRoot").transform;
+            }
+
+            var screenPrefab = _configProvider.ScreensConfig.GetScreen<TScreen>();
+            return _container.Instantiate(screenPrefab, _uiRoot);
+        }
+
+        public void Cleanup()
+        {
+            _uiRoot = null;
+        }
+    }
+}
