@@ -21,7 +21,7 @@ namespace VoxInvasion.Runtime.Services.UI
         {
             if (_uiRoot == null)
             {
-                _uiRoot = new GameObject("UIRoot").transform;
+                _uiRoot = Object.Instantiate(_configProvider.ScreensConfig.UIRootPrefab);
             }
 
             var screenPrefab = _configProvider.ScreensConfig.GetScreen<TScreen>();

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77ec0138ed04af895cd8c976573971b, type: 3}
   m_Name: ScreensConfig
   m_EditorClassIdentifier: 
-  _screens: []
+  _screens:
+  - {fileID: 1649160668491473094, guid: f157d3b1da401425ea265523e6dd6d7a, type: 3}
