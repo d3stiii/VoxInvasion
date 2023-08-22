@@ -1,0 +1,21 @@
+using UnityEngine;
+
+namespace VoxInvasion.Runtime.UI.Screens
+{
+    public abstract class BaseScreen : MonoBehaviour
+    {
+        private void Awake() =>
+            OnAwake();
+
+        private void Start()
+        {
+            Initialize();
+            SubscribeUpdates();
+        }
+
+        protected virtual void OnAwake() { }
+        protected virtual void Initialize() { }
+        protected virtual void SubscribeUpdates() { }
+        protected virtual void Cleanup() { }
+    }
+}
