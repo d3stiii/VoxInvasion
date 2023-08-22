@@ -1,6 +1,6 @@
 using VContainer.Unity;
 
-namespace CodeBase.EntryPoints
+namespace VoxInvasion.Runtime.EntryPoints
 {
     public class BattleEntryPoint : IStartable
     {

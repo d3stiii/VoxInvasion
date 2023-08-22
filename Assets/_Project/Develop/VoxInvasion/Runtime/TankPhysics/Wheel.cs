@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class Wheel : MonoBehaviour
+namespace VoxInvasion.Runtime.TankPhysics
 {
-    /*[SerializeField] Rigidbody _tankRigidbody;
+    public class Wheel : MonoBehaviour
+    {
+        /*[SerializeField] Rigidbody _tankRigidbody;
     [SerializeField] Transform _wheelModel;
     [SerializeField] Vector3 _gizmosPositionOffset;
     [SerializeField] Vector3 _gizomsRotationOffset;
@@ -46,4 +48,5 @@ public class Wheel : MonoBehaviour
         Gizmos.matrix = positionMatrix;
         Gizmos.DrawWireMesh(_wheelMesh);
     }*/
+    }
 }

@@ -1,8 +1,8 @@
-using CodeBase.EntryPoints;
 using VContainer;
 using VContainer.Unity;
+using VoxInvasion.Runtime.EntryPoints;
 
-namespace CodeBase.Lifetimes
+namespace VoxInvasion.Runtime.Lifetimes
 {
     public class BattleLifetime : LifetimeScope
     {

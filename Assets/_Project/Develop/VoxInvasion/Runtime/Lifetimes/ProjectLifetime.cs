@@ -1,7 +1,7 @@
 using VContainer;
 using VContainer.Unity;
 
-namespace CodeBase.Lifetimes
+namespace VoxInvasion.Runtime.Lifetimes
 {
     public class ProjectLifetime : LifetimeScope
     {
