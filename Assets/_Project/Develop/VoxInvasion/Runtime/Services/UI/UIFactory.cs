@@ -27,10 +27,5 @@ namespace VoxInvasion.Runtime.Services.UI
             var screenPrefab = _configProvider.ScreensConfig.GetScreen<TScreen>();
             return _container.Instantiate(screenPrefab, _uiRoot);
         }
-
-        public void Cleanup()
-        {
-            _uiRoot = null;
-        }
     }
 }
