@@ -1,5 +1,6 @@
 using VContainer;
 using VContainer.Unity;
+using VoxInvasion.Runtime.Services.AssetManagement;
 
 namespace VoxInvasion.Runtime.Lifetimes
 {
@@ -7,7 +8,7 @@ namespace VoxInvasion.Runtime.Lifetimes
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            
+            builder.Register<IAssetLoader, AssetLoader>(Lifetime.Singleton);
         }
     }
 }
