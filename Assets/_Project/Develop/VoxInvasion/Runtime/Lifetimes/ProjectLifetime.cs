@@ -2,6 +2,7 @@ using VContainer;
 using VContainer.Unity;
 using VoxInvasion.Runtime.Services;
 using VoxInvasion.Runtime.Services.AssetManagement;
+using VoxInvasion.Runtime.Services.Networking;
 using VoxInvasion.Runtime.Services.UI;
 
 namespace VoxInvasion.Runtime.Lifetimes
@@ -14,6 +15,8 @@ namespace VoxInvasion.Runtime.Lifetimes
             builder.Register<ScreenService>(Lifetime.Singleton);
             builder.Register<IAssetLoader, AssetLoader>(Lifetime.Singleton);
             builder.Register<ConfigProvider>(Lifetime.Singleton);
+            builder.Register<IServerConnector, GameServerConnector>(Lifetime.Singleton);
+            builder.Register<PacketHandlerProvider>(Lifetime.Singleton);
         }
     }
 }

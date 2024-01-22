@@ -81,7 +81,7 @@ namespace VoxInvasion.Runtime.TankPhysics
                                  transform.right * _tank.Rigidbody.GetPointVelocity(transform.TransformPoint(hit.point)).x 
                                               * _tireGrip*/;
             
-                print(_tank.Rigidbody.GetPointVelocity(transform.TransformPoint(hit.point)));
+//                print(_tank.Rigidbody.GetPointVelocity(transform.TransformPoint(hit.point)));
             
                 var movingForce = verticalMovement + frictionForces;
                 _tank.Rigidbody.AddForceAtPosition(movingForce + (_springForce + _damperForce) * -transform.forward, hit.point);
