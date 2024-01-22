@@ -13,6 +13,7 @@ namespace VoxInvasion.Runtime.Services
         public ConfigProvider(IAssetLoader assetLoader)
         {
             _assetLoader = assetLoader;
+            Load();
         }
         
         public void Load()

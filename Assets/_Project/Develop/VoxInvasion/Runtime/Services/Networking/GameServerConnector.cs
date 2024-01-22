@@ -6,16 +6,13 @@ namespace VoxInvasion.Runtime.Services.Networking
     public class GameServerConnector : IServerConnector
     {
         private readonly PacketHandlerProvider _packetHandlerProvider;
-        private Client _client;
+        private readonly Client _client;
 
-        public GameServerConnector(PacketHandlerProvider packetHandlerProvider)
+        public GameServerConnector(Client client) =>
+            _client = client;
+
+        public void Connect()
         {
-            _packetHandlerProvider = packetHandlerProvider;
-        }
-        
-        public void Connect(string ip, ushort port)
-        {
-            _client = new Client(ip, port, _packetHandlerProvider);
             _client.ConnectAsync();
             Application.quitting += Disconnect;
         }

@@ -2,6 +2,7 @@ using System.Net.Sockets;
 using UnityEngine;
 using VoxInvasion.Runtime.Networking.Protocol.Packets;
 using VoxInvasion.Runtime.Networking.Protocol.Packets.Common;
+using VoxInvasion.Runtime.Services;
 using VoxInvasion.Runtime.Services.Networking;
 using TcpClient = NetCoreServer.TcpClient;
 
@@ -11,7 +12,8 @@ namespace VoxInvasion.Runtime.Networking
     {
         private readonly PacketHandlerProvider _packetHandlerProvider;
 
-        public Client(string address, int port, PacketHandlerProvider packetHandlerProvider) : base(address, port)
+        public Client(ConfigProvider configProvider, PacketHandlerProvider packetHandlerProvider) : base(
+            configProvider.ServerConnectionConfig.IP, configProvider.ServerConnectionConfig.Port)
         {
             _packetHandlerProvider = packetHandlerProvider;
         }
@@ -33,7 +35,7 @@ namespace VoxInvasion.Runtime.Networking
                 Debug.LogWarning($"No handler found for packet {packet.Id}");
                 return;
             }
-            
+
             handler.Execute(packet, this);
         }
 
