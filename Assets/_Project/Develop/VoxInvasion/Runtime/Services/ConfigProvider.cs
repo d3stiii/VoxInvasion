@@ -8,6 +8,7 @@ namespace VoxInvasion.Runtime.Services
     {
         private readonly IAssetLoader _assetLoader;
         private ScreensConfig _screensConfig;
+        private ServerConnectionConfig _serverConnectionConfig;
 
         public ConfigProvider(IAssetLoader assetLoader)
         {
@@ -17,8 +18,11 @@ namespace VoxInvasion.Runtime.Services
         public void Load()
         {
             _screensConfig = _assetLoader.Load<ScreensConfig>(AssetsPath.ScreensConfigPath);
+            _serverConnectionConfig = _assetLoader.Load<ServerConnectionConfig>(AssetsPath.ServerConnectionConfigPath);
         }
 
         public ScreensConfig ScreensConfig => _screensConfig;
+
+        public ServerConnectionConfig ServerConnectionConfig => _serverConnectionConfig;
     }
 }

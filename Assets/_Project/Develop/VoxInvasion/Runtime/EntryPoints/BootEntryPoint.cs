@@ -19,7 +19,8 @@ namespace VoxInvasion.Runtime.EntryPoints
         public void Start()
         {
             _configProvider.Load();
-            _gameServerConnector.Connect("127.0.0.1", 25565);
+            var server = _configProvider.ServerConnectionConfig;
+            _gameServerConnector.Connect(server.IP, server.Port);
             SceneManager.LoadScene("SampleScene");
         }
     }
