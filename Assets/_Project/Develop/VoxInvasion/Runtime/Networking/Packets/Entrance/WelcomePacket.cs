@@ -1,10 +1,16 @@
+using ProtoBuf;
 using UnityEngine;
-using VoxInvasion.Runtime.Networking.Protocol.Packets;
-using VoxInvasion.Runtime.Networking.Protocol.Packets.Authentication.Login;
-using VoxInvasion.Runtime.Networking.Protocol.Packets.Common;
+using VoxInvasion.Runtime.Networking.Packets.Entrance.Login;
 
-namespace VoxInvasion.Runtime.Networking.Protocol.Handlers.Common
+namespace VoxInvasion.Runtime.Networking.Packets.Entrance
 {
+    [ProtoContract]
+    public class WelcomePacket : IPacket
+    {
+        [ProtoMember(1)] public PacketId Id { get; } = PacketId.Welcome;
+        [ProtoMember(2)] public string Message { get; set; } = null!;
+    }
+
     public class WelcomeHandler : IPacketHandler
     {
         public PacketId Id { get; } = PacketId.Welcome;

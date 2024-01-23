@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-using VoxInvasion.Runtime.Networking.Protocol.Handlers;
-using VoxInvasion.Runtime.Networking.Protocol.Packets;
+using VoxInvasion.Runtime.Networking.Packets;
 
 namespace VoxInvasion.Runtime.Services.Networking
 {

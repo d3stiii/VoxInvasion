@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace VoxInvasion.Runtime.Networking.Protocol.Packets.Authentication.Registration
+namespace VoxInvasion.Runtime.Networking.Packets.Entrance.Registration
 {
     [ProtoContract]
     public class RegisterRequestPacket : IPacket

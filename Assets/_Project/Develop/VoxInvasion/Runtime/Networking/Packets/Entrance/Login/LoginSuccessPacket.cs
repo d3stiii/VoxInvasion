@@ -1,9 +1,15 @@
-﻿using UnityEngine.SceneManagement;
+﻿using ProtoBuf;
+using UnityEngine.SceneManagement;
 using VContainer;
-using VoxInvasion.Runtime.Networking.Protocol.Packets;
 
-namespace VoxInvasion.Runtime.Networking.Protocol.Handlers.Authentication.Login
+namespace VoxInvasion.Runtime.Networking.Packets.Entrance.Login
 {
+    [ProtoContract]
+    public class LoginSuccessPacket : IPacket
+    {
+        [ProtoMember(1)] public PacketId Id { get; } = PacketId.LoginSuccess;
+    }
+    
     public class LoginSuccessHandler : IPacketHandler
     {
         private ThreadService _threadService;

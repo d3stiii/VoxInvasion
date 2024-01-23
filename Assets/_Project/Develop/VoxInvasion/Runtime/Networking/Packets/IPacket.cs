@@ -1,9 +1,10 @@
 using ProtoBuf;
-using VoxInvasion.Runtime.Networking.Protocol.Packets.Authentication.Login;
-using VoxInvasion.Runtime.Networking.Protocol.Packets.Authentication.Registration;
-using VoxInvasion.Runtime.Networking.Protocol.Packets.Common;
+using VoxInvasion.Runtime.Networking.Packets.Entrance;
+using VoxInvasion.Runtime.Networking.Packets.Entrance.Login;
+using VoxInvasion.Runtime.Networking.Packets.Entrance.Registration;
+using VoxInvasion.Runtime.Networking.Packets.Ping;
 
-namespace VoxInvasion.Runtime.Networking.Protocol.Packets
+namespace VoxInvasion.Runtime.Networking.Packets
 {
     [ProtoContract]
     [ProtoInclude(100, typeof(WelcomePacket))]

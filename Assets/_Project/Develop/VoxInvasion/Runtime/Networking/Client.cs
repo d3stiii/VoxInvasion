@@ -1,7 +1,7 @@
 using System.Net.Sockets;
 using UnityEngine;
-using VoxInvasion.Runtime.Networking.Protocol.Packets;
-using VoxInvasion.Runtime.Networking.Protocol.Packets.Common;
+using VoxInvasion.Runtime.Networking.Packets;
+using VoxInvasion.Runtime.Networking.Packets.Entrance;
 using VoxInvasion.Runtime.Services;
 using VoxInvasion.Runtime.Services.Networking;
 using TcpClient = NetCoreServer.TcpClient;

@@ -1,6 +1,6 @@
 ﻿using System;
 using VContainer;
-using VoxInvasion.Runtime.Networking.Protocol.Handlers;
+using VoxInvasion.Runtime.Networking.Packets;
 
 namespace VoxInvasion.Runtime.Services.Networking
 {

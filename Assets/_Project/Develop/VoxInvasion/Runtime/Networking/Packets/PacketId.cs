@@ -1,4 +1,4 @@
-namespace VoxInvasion.Runtime.Networking.Protocol.Packets
+namespace VoxInvasion.Runtime.Networking.Packets
 {
     public enum PacketId
     {

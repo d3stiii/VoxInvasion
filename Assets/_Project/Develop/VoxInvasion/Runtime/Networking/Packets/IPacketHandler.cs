@@ -1,6 +1,4 @@
-using VoxInvasion.Runtime.Networking.Protocol.Packets;
-
-namespace VoxInvasion.Runtime.Networking.Protocol.Handlers
+namespace VoxInvasion.Runtime.Networking.Packets
 {
     public interface IPacketHandler
     {

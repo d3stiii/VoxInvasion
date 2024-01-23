@@ -1,6 +1,6 @@
 using ProtoBuf;
 
-namespace VoxInvasion.Runtime.Networking.Protocol.Packets.Authentication.Login
+namespace VoxInvasion.Runtime.Networking.Packets.Entrance.Login
 {
     [ProtoContract]
     public class LoginRequestPacket : IPacket
