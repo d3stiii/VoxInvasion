@@ -10,6 +10,9 @@ namespace VoxInvasion.Runtime.Networking.Protocol.Packets
     [ProtoInclude(200, typeof(PingPacket))]
     [ProtoInclude(300, typeof(LoginRequestPacket))]
     [ProtoInclude(400, typeof(RegisterRequestPacket))]
+    [ProtoInclude(500, typeof(RegistrationFailedPacket))]
+    [ProtoInclude(600, typeof(LoginSuccessPacket))]
+    [ProtoInclude(700, typeof(LoginFailedPacket))]
     public interface IPacket
     {
         PacketId Id { get; }

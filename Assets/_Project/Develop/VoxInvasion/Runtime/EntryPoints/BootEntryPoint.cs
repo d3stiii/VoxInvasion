@@ -1,4 +1,3 @@
-using UnityEngine.SceneManagement;
 using VContainer.Unity;
 using VoxInvasion.Runtime.Networking;
 using VoxInvasion.Runtime.Services.Networking;
@@ -21,7 +20,6 @@ namespace VoxInvasion.Runtime.EntryPoints
         {
             _threadService.Initialize();
             _serverConnector.Connect();
-            SceneManager.LoadScene("SampleScene");
         }
     }
 }

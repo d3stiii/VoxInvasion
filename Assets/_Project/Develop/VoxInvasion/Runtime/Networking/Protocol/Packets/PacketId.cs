@@ -5,6 +5,9 @@ namespace VoxInvasion.Runtime.Networking.Protocol.Packets
         Welcome,
         Ping,
         LoginRequest,
-        RegisterRequest
+        RegisterRequest,
+        RegistrationFailed,
+        LoginSuccess,
+        LoginFailed
     }
 }
