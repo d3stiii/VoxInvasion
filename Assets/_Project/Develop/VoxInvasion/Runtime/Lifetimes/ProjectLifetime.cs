@@ -18,6 +18,7 @@ namespace VoxInvasion.Runtime.Lifetimes
             builder.Register<ConfigProvider>(Lifetime.Singleton);
             builder.Register<IServerConnector, GameServerConnector>(Lifetime.Singleton);
             builder.Register<PacketHandlerProvider>(Lifetime.Singleton);
+            builder.Register<PacketHandlerFactory>(Lifetime.Singleton);
             builder.Register<Client>(Lifetime.Singleton);
         }
     }
