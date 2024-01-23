@@ -8,6 +8,8 @@ namespace VoxInvasion.Runtime.Networking.Packets
         RegisterRequest,
         RegistrationFailed,
         LoginSuccess,
-        LoginFailed
+        LoginFailed,
+        Pong,
+        PingResult
     }
 }
