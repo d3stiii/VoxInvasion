@@ -21,14 +21,12 @@ namespace VoxInvasion.Runtime.Networking
         public void SendAsync(IPacket packet)
         {
             var data = packet.Serialize();
-            Debug.Log($"Outgoing packet: {packet.Id}");
             base.SendAsync(data);
         }
 
         protected override void OnReceived(byte[] buffer, long offset, long size)
         {
             var packet = buffer.Deserialize(offset, size);
-            Debug.Log($"Incoming packet: {packet.Id}");
             var handler = _packetHandlerProvider.GetHandler(packet.Id);
             if (handler == null)
             {
