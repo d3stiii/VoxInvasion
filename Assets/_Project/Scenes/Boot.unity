@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 1327380606}
   - component: {fileID: 1327380605}
   m_Layer: 0
-  m_Name: BootLifetime
+  m_Name: BootScope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

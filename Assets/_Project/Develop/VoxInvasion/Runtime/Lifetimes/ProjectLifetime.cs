@@ -25,6 +25,7 @@ namespace VoxInvasion.Runtime.Lifetimes
             builder.Register<PacketHandlerFactory>(Lifetime.Singleton);
             builder.Register<Client>(Lifetime.Singleton);
             builder.Register<ThreadService>(Lifetime.Singleton);
+            builder.Register<AuthService>(Lifetime.Singleton);
             builder.RegisterComponentInNewPrefab(_coroutineRunner, Lifetime.Singleton);
         }
     }

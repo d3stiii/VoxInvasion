@@ -4,7 +4,7 @@ using VoxInvasion.Runtime.EntryPoints;
 
 namespace VoxInvasion.Runtime.Lifetimes
 {
-    public class BattleLifetime : LifetimeScope
+    public class BattleScope : LifetimeScope
     {
         protected override void Configure(IContainerBuilder builder)
         {
