@@ -1,5 +1,5 @@
 using UnityEngine;
-using VoxInvasion.Runtime.UI.Screens;
+using VoxInvasion.Runtime.UI;
 
 namespace VoxInvasion.Runtime.Services.UI
 {
@@ -28,7 +28,7 @@ namespace VoxInvasion.Runtime.Services.UI
 
         private void HideCurrentScreen()
         {
-            Object.Destroy(_currentScreen);
+            Object.Destroy(_currentScreen.gameObject);
             _currentScreen = null;
         }
     }

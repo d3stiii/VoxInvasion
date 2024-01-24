@@ -1,23 +1,25 @@
-using UnityEngine.SceneManagement;
 using VContainer.Unity;
-using VoxInvasion.Runtime.Services;
+using VoxInvasion.Runtime.Networking;
+using VoxInvasion.Runtime.Services.Networking;
 
 namespace VoxInvasion.Runtime.EntryPoints
 {
     public class BootEntryPoint : IStartable
     {
-        private readonly ConfigProvider _configProvider;
+        private readonly Client _client;
+        private readonly IServerConnector _serverConnector;
+        private readonly ThreadService _threadService;
 
-        public BootEntryPoint(ConfigProvider configProvider)
+        public BootEntryPoint(IServerConnector serverConnector, ThreadService threadService)
         {
-            _configProvider = configProvider;
+            _serverConnector = serverConnector;
+            _threadService = threadService;
         }
 
         public void Start()
         {
-            _configProvider.Load();
-
-            SceneManager.LoadScene("SampleScene");
+            _threadService.Initialize();
+            _serverConnector.Connect();
         }
     }
 }
