@@ -28,7 +28,7 @@ namespace VoxInvasion.Runtime.Services.UI
 
         private void HideCurrentScreen()
         {
-            Object.Destroy(_currentScreen);
+            Object.Destroy(_currentScreen.gameObject);
             _currentScreen = null;
         }
     }
