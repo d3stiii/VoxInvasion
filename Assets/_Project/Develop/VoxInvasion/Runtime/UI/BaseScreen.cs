@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace VoxInvasion.Runtime.UI.Screens
+namespace VoxInvasion.Runtime.UI
 {
     public abstract class BaseScreen : MonoBehaviour
     {

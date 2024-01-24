@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77ec0138ed04af895cd8c976573971b, type: 3}
   m_Name: ScreensConfig
   m_EditorClassIdentifier: 
+  _uiRootPrefab: {fileID: 2377558014921165166, guid: 01464689061e6475e8462ad5a504f127, type: 3}
   _screens:
-  - {fileID: 1649160668491473094, guid: f157d3b1da401425ea265523e6dd6d7a, type: 3}
+  - {fileID: 6014780671168216879, guid: bc6e7f2385d8e534b8ef2427a7778134, type: 3}
+  - {fileID: 2611513509088625846, guid: d409ae3a01ff5294dbbfe7437699ac52, type: 3}
