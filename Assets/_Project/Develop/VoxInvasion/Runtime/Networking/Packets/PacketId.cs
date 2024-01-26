@@ -14,6 +14,9 @@ namespace VoxInvasion.Runtime.Networking.Packets
         CheckEmail,
         EmailInvalid,
         EmailValid,
-        EmailOccupied
+        EmailOccupied,
+        CheckUsername,
+        UsernameOccupied,
+        UsernameValid
     }
 }

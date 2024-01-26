@@ -17,8 +17,6 @@ namespace VoxInvasion.Runtime.UI.Entrance
         private ScreenService _screenService;
         private AuthService _authService;
         private ValidationService _validationService;
-        private bool _usernameValidated;
-        private bool _emailValidated;
 
         [Inject]
         private void Construct(AuthService authService, ScreenService screenService,
@@ -31,34 +29,18 @@ namespace VoxInvasion.Runtime.UI.Entrance
 
         protected override void Initialize()
         {
-            _emailField.ValidationStatusImage.color = Color.clear;
-            _validationService.InvalidEmail += ShowEmailInvalidError;
-            _validationService.OccupiedEmail += ShowEmailOccupiedError;
-            _validationService.ValidEmail += ShowValidEmailInfo;
-            _emailField.InputField.onValueChanged.AddListener(ValidateEmail);
-            _loginButton.onClick.AddListener(SwitchToLoginScreen);
-            _registerButton.onClick.AddListener(Register);
+            ResetValidationField(_emailField);
+            ResetValidationField(_usernameField);
+            InitializeEmailField();
+            InitializeUsernameField();
+            InitializeButtons();
         }
 
         protected override void Cleanup()
         {
-            _validationService.InvalidEmail -= ShowEmailInvalidError;
-            _validationService.OccupiedEmail -= ShowEmailOccupiedError;
-            _validationService.ValidEmail -= ShowValidEmailInfo;
-            _loginButton.onClick.RemoveListener(SwitchToLoginScreen);
-            _registerButton.onClick.RemoveListener(Register);
-            _emailField.InputField.onValueChanged.RemoveListener(ValidateEmail);
-        }
-
-        private void ValidateEmail(string email)
-        {
-            ResetEmailValidation();
-            UpdateRegisterButton();
-
-            if (!string.IsNullOrEmpty(email))
-            {
-                _validationService.ValidateEmail(email);
-            }
+            CleanupEmailField();
+            CleanupUsernameField();
+            CleanupButtons();
         }
 
         private void Register() =>
@@ -68,35 +50,101 @@ namespace VoxInvasion.Runtime.UI.Entrance
         private void SwitchToLoginScreen() =>
             _screenService.Show<LoginScreen>();
 
-        private void ShowEmailValidationError(string reason)
+        private void InitializeButtons()
         {
-            _emailField.ValidationStatusImage.color = Color.red;
-            _emailField.ValidationInfoText.text = reason;
-            _emailValidated = false;
+            _loginButton.onClick.AddListener(SwitchToLoginScreen);
+            _registerButton.onClick.AddListener(Register);
+        }
+
+        private void InitializeUsernameField()
+        {
+            _validationService.OccupiedUsername += ShowUsernameOccupiedError;
+            _validationService.ValidUsername += ShowValidUsernameInfo;
+            _validationService.InvalidUsername += ShowInvalidEmailInfo;
+            _usernameField.InputField.onValueChanged.AddListener(ValidateUsername);
+        }
+
+        private void InitializeEmailField()
+        {
+            _validationService.InvalidEmail += ShowEmailInvalidError;
+            _validationService.OccupiedEmail += ShowEmailOccupiedError;
+            _validationService.ValidEmail += ShowValidEmailInfo;
+            _emailField.InputField.onValueChanged.AddListener(ValidateEmail);
+        }
+
+        private void CleanupButtons()
+        {
+            _loginButton.onClick.RemoveListener(SwitchToLoginScreen);
+            _registerButton.onClick.RemoveListener(Register);
+        }
+
+        private void CleanupUsernameField()
+        {
+            _validationService.OccupiedUsername -= ShowUsernameOccupiedError;
+            _validationService.ValidUsername -= ShowValidUsernameInfo;
+            _usernameField.InputField.onValueChanged.RemoveListener(ValidateUsername);
+        }
+
+        private void CleanupEmailField()
+        {
+            _validationService.InvalidEmail -= ShowEmailInvalidError;
+            _validationService.OccupiedEmail -= ShowEmailOccupiedError;
+            _validationService.ValidEmail -= ShowValidEmailInfo;
+            _emailField.InputField.onValueChanged.RemoveListener(ValidateEmail);
+        }
+
+        private void ValidateEmail(string email)
+        {
+            ResetValidationField(_emailField);
+            _validationService.ValidateEmail(email);
             UpdateRegisterButton();
         }
 
-        private void ShowEmailInvalidError() =>
-            ShowEmailValidationError("This email is invalid.");
+        private void ValidateUsername(string username)
+        {
+            ResetValidationField(_usernameField);
+            _validationService.ValidateUsername(username);
+            UpdateRegisterButton();
+        }
 
-        private void ShowEmailOccupiedError() =>
-            ShowEmailValidationError("This email is already registered.");
+        private void UpdateRegisterButton() =>
+            _registerButton.interactable = _validationService.AllValidated;
+
+        private void ResetValidationField(ValidationInputField field)
+        {
+            field.ValidationStatusImage.color = Color.clear;
+            field.ValidationInfoText.text = string.Empty;
+        }
+
+        private void ShowValidUsernameInfo()
+        {
+            _usernameField.ValidationStatusImage.color = Color.green;
+            UpdateRegisterButton();
+        }
 
         private void ShowValidEmailInfo()
         {
             _emailField.ValidationStatusImage.color = Color.green;
-            _emailValidated = true;
             UpdateRegisterButton();
         }
 
-        private void ResetEmailValidation()
+        private void ShowValidationError(ValidationInputField field, string reason)
         {
-            _emailField.ValidationStatusImage.color = Color.clear;
-            _emailField.ValidationInfoText.text = string.Empty;
-            _emailValidated = false;
+            field.ValidationStatusImage.color = Color.red;
+            field.ValidationInfoText.text = reason;
+            UpdateRegisterButton();
         }
 
-        private void UpdateRegisterButton() =>
-            _registerButton.interactable = _emailValidated;
+        private void ShowUsernameOccupiedError() =>
+            ShowValidationError(_usernameField, "This username is already registered.");
+
+        private void ShowInvalidEmailInfo() =>
+            ShowValidationError(_usernameField, "This username is invalid.");
+
+        private void ShowEmailInvalidError() =>
+            ShowValidationError(_emailField, "This email is invalid.");
+
+        private void ShowEmailOccupiedError() =>
+            ShowValidationError(_emailField, "This email is already registered.");
     }
 }

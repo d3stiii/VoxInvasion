@@ -1103,6 +1103,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Enter username
       objectReference: {fileID: 0}
+    - target: {fileID: 3581565639219739894, guid: 0cfbcd16b85169d4cae62f61d950e00c, type: 3}
+      propertyPath: m_CharacterLimit
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4407159555817816811, guid: 0cfbcd16b85169d4cae62f61d950e00c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
