@@ -11,11 +11,14 @@ namespace VoxInvasion.Runtime.Networking
     public class Client : TcpClient
     {
         private readonly PacketHandlerProvider _packetHandlerProvider;
+        private readonly ThreadService _threadService;
 
-        public Client(ConfigProvider configProvider, PacketHandlerProvider packetHandlerProvider) : base(
+        public Client(ConfigProvider configProvider, PacketHandlerProvider packetHandlerProvider,
+            ThreadService threadService) : base(
             configProvider.ServerConnectionConfig.IP, configProvider.ServerConnectionConfig.Port)
         {
             _packetHandlerProvider = packetHandlerProvider;
+            _threadService = threadService;
         }
 
         public void SendAsync(IPacket packet)
@@ -34,7 +37,7 @@ namespace VoxInvasion.Runtime.Networking
                 return;
             }
 
-            handler.Execute(packet, this);
+            _threadService.ExecuteInMainThread(() => handler.Execute(packet, this));
         }
 
         protected override void OnConnected()

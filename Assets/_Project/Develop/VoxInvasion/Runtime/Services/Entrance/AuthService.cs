@@ -2,7 +2,7 @@
 using VoxInvasion.Runtime.Networking.Packets.Entrance.Login;
 using VoxInvasion.Runtime.Networking.Packets.Entrance.Registration;
 
-namespace VoxInvasion.Runtime.Services
+namespace VoxInvasion.Runtime.Services.Entrance
 {
     public class AuthService
     {

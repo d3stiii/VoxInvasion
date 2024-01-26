@@ -2,6 +2,7 @@ using ProtoBuf;
 using VoxInvasion.Runtime.Networking.Packets.Entrance;
 using VoxInvasion.Runtime.Networking.Packets.Entrance.Login;
 using VoxInvasion.Runtime.Networking.Packets.Entrance.Registration;
+using VoxInvasion.Runtime.Networking.Packets.Entrance.Validation;
 using VoxInvasion.Runtime.Networking.Packets.Ping;
 
 namespace VoxInvasion.Runtime.Networking.Packets
@@ -16,6 +17,10 @@ namespace VoxInvasion.Runtime.Networking.Packets
     [ProtoInclude(700, typeof(LoginFailedPacket))]
     [ProtoInclude(800, typeof(PongPacket))]
     [ProtoInclude(900, typeof(PingResultPacket))]
+    [ProtoInclude(1000, typeof(CheckEmailPacket))]
+    [ProtoInclude(1100, typeof(EmailInvalidPacket))]
+    [ProtoInclude(1200, typeof(EmailOccupiedPacket))]
+    [ProtoInclude(1300, typeof(EmailValidPacket))]
     public interface IPacket
     {
         PacketId Id { get; }

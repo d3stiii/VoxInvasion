@@ -5,6 +5,7 @@ using VoxInvasion.Runtime.Networking;
 using VoxInvasion.Runtime.Services;
 using VoxInvasion.Runtime.Services.AssetManagement;
 using VoxInvasion.Runtime.Services.Common;
+using VoxInvasion.Runtime.Services.Entrance;
 using VoxInvasion.Runtime.Services.Networking;
 using VoxInvasion.Runtime.Services.UI;
 
@@ -27,6 +28,7 @@ namespace VoxInvasion.Runtime.Lifetimes
             builder.Register<ThreadService>(Lifetime.Singleton);
             builder.Register<AuthService>(Lifetime.Singleton);
             builder.RegisterComponentInNewPrefab(_coroutineRunner, Lifetime.Singleton);
+            builder.Register<ValidationService>(Lifetime.Singleton);
         }
     }
 }

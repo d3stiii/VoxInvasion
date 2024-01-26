@@ -9,7 +9,7 @@ namespace VoxInvasion.Runtime.Networking.Packets.Entrance.Login
     {
         [ProtoMember(1)] public PacketId Id { get; } = PacketId.LoginSuccess;
     }
-    
+
     public class LoginSuccessHandler : IPacketHandler
     {
         private ThreadService _threadService;
@@ -17,7 +17,7 @@ namespace VoxInvasion.Runtime.Networking.Packets.Entrance.Login
 
         public void Execute(IPacket packet, Client client)
         {
-            _threadService.ExecuteInMainThread(() => SceneManager.LoadScene("_Project/Scenes/SampleScene"));
+            SceneManager.LoadScene("_Project/Scenes/SampleScene");
         }
 
         [Inject]
