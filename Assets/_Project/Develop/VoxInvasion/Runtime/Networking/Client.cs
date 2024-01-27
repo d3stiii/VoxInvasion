@@ -2,8 +2,10 @@ using System.Net.Sockets;
 using UnityEngine;
 using VoxInvasion.Runtime.Networking.Packets;
 using VoxInvasion.Runtime.Networking.Packets.Entrance;
-using VoxInvasion.Runtime.Services;
+using VoxInvasion.Runtime.Services.Common;
+using VoxInvasion.Runtime.Services.FatalError;
 using VoxInvasion.Runtime.Services.Networking;
+using VoxInvasion.Runtime.Services.StaticData;
 using TcpClient = NetCoreServer.TcpClient;
 
 namespace VoxInvasion.Runtime.Networking
@@ -12,13 +14,15 @@ namespace VoxInvasion.Runtime.Networking
     {
         private readonly PacketHandlerProvider _packetHandlerProvider;
         private readonly ThreadService _threadService;
+        private readonly ErrorHandler _errorHandler;
 
         public Client(ConfigProvider configProvider, PacketHandlerProvider packetHandlerProvider,
-            ThreadService threadService) : base(
+            ThreadService threadService, ErrorHandler errorHandler) : base(
             configProvider.ServerConnectionConfig.IP, configProvider.ServerConnectionConfig.Port)
         {
             _packetHandlerProvider = packetHandlerProvider;
             _threadService = threadService;
+            _errorHandler = errorHandler;
         }
 
         public void SendAsync(IPacket packet)
@@ -49,11 +53,13 @@ namespace VoxInvasion.Runtime.Networking
 
         protected override void OnDisconnected()
         {
+            _errorHandler.HandleServerError(SocketError.Disconnecting);
             Debug.Log("Connection with server closed");
         }
 
         protected override void OnError(SocketError error)
         {
+            _errorHandler.HandleServerError(error);
             Debug.LogError($"Client caught an error with code {error}");
         }
     }

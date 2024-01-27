@@ -2,7 +2,7 @@ using VoxInvasion.Runtime.Configs;
 using VoxInvasion.Runtime.Constants;
 using VoxInvasion.Runtime.Services.AssetManagement;
 
-namespace VoxInvasion.Runtime.Services
+namespace VoxInvasion.Runtime.Services.StaticData
 {
     public class ConfigProvider
     {

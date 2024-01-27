@@ -2,19 +2,20 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using VoxInvasion.Runtime.Networking;
-using VoxInvasion.Runtime.Services;
 using VoxInvasion.Runtime.Services.AssetManagement;
 using VoxInvasion.Runtime.Services.Common;
 using VoxInvasion.Runtime.Services.Entrance;
+using VoxInvasion.Runtime.Services.FatalError;
 using VoxInvasion.Runtime.Services.Networking;
+using VoxInvasion.Runtime.Services.StaticData;
 using VoxInvasion.Runtime.Services.UI;
 
-namespace VoxInvasion.Runtime.Lifetimes
+namespace VoxInvasion.Runtime.Scopes
 {
-    public class ProjectLifetime : LifetimeScope
+    public class ProjectScope : LifetimeScope
     {
         [SerializeField] private CoroutineRunner _coroutineRunner;
-        
+
         protected override void Configure(IContainerBuilder builder)
         {
             builder.Register<UIFactory>(Lifetime.Singleton);
@@ -29,6 +30,8 @@ namespace VoxInvasion.Runtime.Lifetimes
             builder.Register<AuthService>(Lifetime.Singleton);
             builder.RegisterComponentInNewPrefab(_coroutineRunner, Lifetime.Singleton);
             builder.Register<ValidationService>(Lifetime.Singleton);
+            builder.Register<ErrorHandler>(Lifetime.Singleton);
+            builder.Register<SceneLoader>(Lifetime.Singleton);
         }
     }
 }

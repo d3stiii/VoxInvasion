@@ -1,5 +1,6 @@
 using VContainer.Unity;
 using VoxInvasion.Runtime.Networking;
+using VoxInvasion.Runtime.Services.Common;
 using VoxInvasion.Runtime.Services.Networking;
 
 namespace VoxInvasion.Runtime.EntryPoints

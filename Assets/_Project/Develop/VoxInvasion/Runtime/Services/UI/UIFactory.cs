@@ -1,6 +1,7 @@
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+using VoxInvasion.Runtime.Services.StaticData;
 using VoxInvasion.Runtime.UI;
 
 namespace VoxInvasion.Runtime.Services.UI

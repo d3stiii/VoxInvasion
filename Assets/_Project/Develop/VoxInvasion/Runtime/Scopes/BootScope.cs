@@ -2,7 +2,7 @@ using VContainer;
 using VContainer.Unity;
 using VoxInvasion.Runtime.EntryPoints;
 
-namespace VoxInvasion.Runtime.Lifetimes
+namespace VoxInvasion.Runtime.Scopes
 {
     public class BootScope : LifetimeScope
     {

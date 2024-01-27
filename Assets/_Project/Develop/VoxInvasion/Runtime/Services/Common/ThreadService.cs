@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using VoxInvasion.Runtime.Services.Common;
 
-namespace VoxInvasion.Runtime
+namespace VoxInvasion.Runtime.Services.Common
 {
     public class ThreadService
     {

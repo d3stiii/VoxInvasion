@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/Entrance.unity
     guid: 4588832b94b21404884340d32fcae966
+  - enabled: 1
+    path: Assets/_Project/Scenes/FatalError.unity
+    guid: edd59ffa282d0804ca5da5fd8e69e2f8
   m_configObjects: {}
