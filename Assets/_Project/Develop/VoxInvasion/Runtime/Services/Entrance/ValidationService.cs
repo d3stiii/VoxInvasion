@@ -10,13 +10,16 @@ namespace VoxInvasion.Runtime.Services.Entrance
         private readonly Client _client;
         private bool _usernameValidated;
         private bool _emailValidated;
+        private bool _passwordValidated;
         public event Action ValidEmail;
         public event Action InvalidEmail;
         public event Action OccupiedEmail;
         public event Action ValidUsername;
         public event Action InvalidUsername;
         public event Action OccupiedUsername;
-        public bool AllValidated => _usernameValidated && _emailValidated;
+        public event Action PasswordTooShort;
+        public event Action ValidPassword;
+        public bool AllValidated => _usernameValidated && _emailValidated && _passwordValidated;
 
         public ValidationService(Client client) =>
             _client = client;
@@ -49,6 +52,25 @@ namespace VoxInvasion.Runtime.Services.Entrance
             }
 
             _client.SendAsync(new CheckUsernamePacket { Username = username });
+        }
+
+        public void ValidatePassword(string password)
+        {
+            if (string.IsNullOrEmpty(password))
+            {
+                _passwordValidated = false;
+                return;
+            }
+
+            if (password.Length < 6)
+            {
+                _passwordValidated = false;
+                PasswordTooShort?.Invoke();
+                return;
+            }
+
+            ValidPassword?.Invoke();
+            _passwordValidated = true;
         }
 
         public void NotifyValidEmail()

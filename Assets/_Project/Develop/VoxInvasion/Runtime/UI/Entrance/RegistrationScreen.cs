@@ -31,8 +31,10 @@ namespace VoxInvasion.Runtime.UI.Entrance
         {
             ResetValidationField(_emailField);
             ResetValidationField(_usernameField);
+            ResetValidationField(_passwordField);
             InitializeEmailField();
             InitializeUsernameField();
+            InitializePasswordField();
             InitializeButtons();
         }
 
@@ -40,6 +42,7 @@ namespace VoxInvasion.Runtime.UI.Entrance
         {
             CleanupEmailField();
             CleanupUsernameField();
+            CleanupPasswordField();
             CleanupButtons();
         }
 
@@ -72,10 +75,24 @@ namespace VoxInvasion.Runtime.UI.Entrance
             _emailField.InputField.onValueChanged.AddListener(ValidateEmail);
         }
 
+        private void InitializePasswordField()
+        {
+            _validationService.PasswordTooShort += ShowPasswordTooShortError;
+            _validationService.ValidPassword += ShowValidPasswordInfo;
+            _passwordField.InputField.onValueChanged.AddListener(ValidatePassword);
+        }
+
         private void CleanupButtons()
         {
             _loginButton.onClick.RemoveListener(SwitchToLoginScreen);
             _registerButton.onClick.RemoveListener(Register);
+        }
+
+        private void CleanupPasswordField()
+        {
+            _validationService.PasswordTooShort -= ShowPasswordTooShortError;
+            _validationService.ValidPassword -= ShowValidPasswordInfo;
+            _passwordField.InputField.onValueChanged.RemoveListener(ValidatePassword);
         }
 
         private void CleanupUsernameField()
@@ -107,6 +124,13 @@ namespace VoxInvasion.Runtime.UI.Entrance
             UpdateRegisterButton();
         }
 
+        private void ValidatePassword(string password)
+        {
+            ResetValidationField(_passwordField);
+            _validationService.ValidatePassword(password);
+            UpdateRegisterButton();
+        }
+
         private void UpdateRegisterButton() =>
             _registerButton.interactable = _validationService.AllValidated;
 
@@ -128,12 +152,21 @@ namespace VoxInvasion.Runtime.UI.Entrance
             UpdateRegisterButton();
         }
 
+        private void ShowValidPasswordInfo()
+        {
+            _passwordField.ValidationStatusImage.color = Color.green;
+            UpdateRegisterButton();
+        }
+
         private void ShowValidationError(ValidationInputField field, string reason)
         {
             field.ValidationStatusImage.color = Color.red;
             field.ValidationInfoText.text = reason;
             UpdateRegisterButton();
         }
+
+        private void ShowPasswordTooShortError() =>
+            ShowValidationError(_passwordField, "This password is too short");
 
         private void ShowUsernameOccupiedError() =>
             ShowValidationError(_usernameField, "This username is already registered.");
