@@ -10,6 +10,13 @@ namespace VoxInvasion.Runtime.Networking.Packets
         LoginSuccess,
         LoginFailed,
         Pong,
-        PingResult
+        PingResult,
+        CheckEmail,
+        EmailInvalid,
+        EmailValid,
+        EmailOccupied,
+        CheckUsername,
+        UsernameOccupied,
+        UsernameValid
     }
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
-using VoxInvasion.Runtime.Services;
+using VoxInvasion.Runtime.Services.Entrance;
 using VoxInvasion.Runtime.Services.UI;
 
 namespace VoxInvasion.Runtime.UI.Entrance
