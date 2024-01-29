@@ -1,6 +1,5 @@
 using ProtoBuf;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using VContainer;
 using VoxInvasion.Runtime.Services.Common;
 

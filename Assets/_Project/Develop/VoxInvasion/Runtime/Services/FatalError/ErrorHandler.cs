@@ -1,8 +1,5 @@
-﻿using System.Net.Sockets;
-using UnityEngine.SceneManagement;
-using VoxInvasion.Runtime.Services.Common;
+﻿using VoxInvasion.Runtime.Services.Common;
 using VoxInvasion.Runtime.Services.UI;
-using VoxInvasion.Runtime.UI.FatalError;
 
 namespace VoxInvasion.Runtime.Services.FatalError
 {
@@ -18,10 +15,10 @@ namespace VoxInvasion.Runtime.Services.FatalError
             _sceneLoader = sceneLoader;
         }
 
-        public void HandleServerError(SocketError error)
+        public void HandleError(string errorLog)
         {
-            Error = error.ToString(); //TODO: configs with error descriptions for different languages
-            _sceneLoader.Load("FatalError", () => _screenService.Show<FatalErrorScreen>());
+            Error = errorLog; //TODO: configs with error descriptions for different languages
+            _sceneLoader.Load("FatalError");
         }
     }
 }

@@ -53,13 +53,13 @@ namespace VoxInvasion.Runtime.Networking
 
         protected override void OnDisconnected()
         {
-            _errorHandler.HandleServerError(SocketError.Disconnecting);
+            _errorHandler.HandleError("Disconnected from server");
             Debug.Log("Connection with server closed");
         }
 
         protected override void OnError(SocketError error)
         {
-            _errorHandler.HandleServerError(error);
+            _errorHandler.HandleError($"Server error: {error}");
             Debug.LogError($"Client caught an error with code {error}");
         }
     }

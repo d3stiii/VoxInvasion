@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace VoxInvasion.Runtime.Services.Common
