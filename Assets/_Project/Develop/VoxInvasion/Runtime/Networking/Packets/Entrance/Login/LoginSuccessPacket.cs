@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
-using UnityEngine.SceneManagement;
 using VContainer;
+using VoxInvasion.Runtime.Services.Common;
 
 namespace VoxInvasion.Runtime.Networking.Packets.Entrance.Login
 {
@@ -12,18 +12,18 @@ namespace VoxInvasion.Runtime.Networking.Packets.Entrance.Login
 
     public class LoginSuccessHandler : IPacketHandler
     {
-        private ThreadService _threadService;
+        private SceneLoader _sceneLoader;
         public PacketId Id { get; } = PacketId.LoginSuccess;
 
         public void Execute(IPacket packet, Client client)
         {
-            SceneManager.LoadScene("_Project/Scenes/SampleScene");
+            _sceneLoader.Load("SampleScene");
         }
 
         [Inject]
-        public void Construct(ThreadService threadService)
+        public void Construct(SceneLoader sceneLoader)
         {
-            _threadService = threadService;
+            _sceneLoader = sceneLoader;
         }
     }
 }

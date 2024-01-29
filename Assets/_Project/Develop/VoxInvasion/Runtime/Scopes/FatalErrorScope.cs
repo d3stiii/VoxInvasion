@@ -2,13 +2,13 @@
 using VContainer.Unity;
 using VoxInvasion.Runtime.EntryPoints;
 
-namespace VoxInvasion.Runtime.Lifetimes
+namespace VoxInvasion.Runtime.Scopes
 {
-    public class EntranceScope : LifetimeScope
+    public class FatalErrorScope : LifetimeScope
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<EntranceEntryPoint>();
+            builder.RegisterEntryPoint<FatalErrorEntryPoint>();
         }
     }
 }

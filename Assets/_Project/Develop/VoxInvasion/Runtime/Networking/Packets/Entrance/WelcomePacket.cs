@@ -1,6 +1,7 @@
 using ProtoBuf;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using VContainer;
+using VoxInvasion.Runtime.Services.Common;
 
 namespace VoxInvasion.Runtime.Networking.Packets.Entrance
 {
@@ -13,13 +14,18 @@ namespace VoxInvasion.Runtime.Networking.Packets.Entrance
 
     public class WelcomeHandler : IPacketHandler
     {
+        private SceneLoader _sceneLoader;
         public PacketId Id { get; } = PacketId.Welcome;
 
         public void Execute(IPacket packet, Client client)
         {
             var welcomePacket = (WelcomePacket)packet;
             Debug.Log($"Server message: {welcomePacket.Message}");
-            SceneManager.LoadScene("Entrance");
+            _sceneLoader.Load("Entrance");
         }
+
+        [Inject]
+        public void Construct(SceneLoader sceneLoader) => 
+            _sceneLoader = sceneLoader;
     }
 }
