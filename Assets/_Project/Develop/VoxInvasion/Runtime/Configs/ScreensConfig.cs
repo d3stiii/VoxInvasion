@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using VoxInvasion.Runtime.UI;
+using VoxInvasion.Runtime.Utilities.UI;
 
 namespace VoxInvasion.Runtime.Configs
 {
