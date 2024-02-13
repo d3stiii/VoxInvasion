@@ -9,6 +9,7 @@ namespace VoxInvasion.Backend.ServerCommunication
         RegistrationFailed,
         LoginSuccess,
         LoginFailed,
+        LoginFromOtherConnection,
         Pong,
         PingResult,
         CheckEmail,
