@@ -6,7 +6,6 @@ namespace VoxInvasion.Runtime.Bootstrap
 {
     public class BootEntryPoint : IStartable
     {
-        private readonly Client _client;
         private readonly IServerConnector _serverConnector;
         private readonly ThreadService _threadService;
 
